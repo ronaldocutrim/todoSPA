@@ -1,0 +1,9 @@
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* criar estilo para que o html e a body tenha uma altura da view port */
+html, body, #root {
+  height: 100vh;
+}
