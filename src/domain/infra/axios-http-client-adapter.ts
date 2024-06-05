@@ -3,7 +3,7 @@ import { HttpClient } from './adapters/http-client';
 import { Storage } from './adapters/storage';
 
 const api = axios.create({
-  baseURL: 'http://todoapi.ronaldocutrim.com.br/api',
+  baseURL: 'https://todo-api-ivrr.onrender.com/api',
 });
 
 export class AxiosHttpClientAdapter implements HttpClient {
@@ -23,5 +23,9 @@ export class AxiosHttpClientAdapter implements HttpClient {
 
   async post<T, K>(url: string, body: K): Promise<T> {
     return (await api.post(url, body)).data;
+  }
+
+  async patch<T, K>(url: string, body: K): Promise<T> {
+    return (await api.patch(url, body)).data;
   }
 }

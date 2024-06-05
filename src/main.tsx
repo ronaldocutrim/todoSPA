@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  RouterProvider,
   createBrowserRouter,
   redirect,
+  RouterProvider,
 } from 'react-router-dom';
+
+export const queryClient = new QueryClient();
 import { LoginScreen } from './screens/login';
 import './index.css';
 import { TodoScreen } from './screens/todo';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,7 @@ const router = createBrowserRouter([
 ]);
 
 function loginLoader() {
+  // TODO: Add method abstract to get token
   if (window.localStorage.getItem('token')) {
     return redirect('/todos');
   }
@@ -38,6 +42,8 @@ function privateLoader() {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>,
 );

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/button';
-import { Input } from '@/components/input';
+import { TextField } from '@/components/text-field.tsx';
 import { AuthenticationDto } from '@/domain/dto/authentication-dto';
 import { makeGetUserToken } from '@/domain/factory/get-user-token';
 
@@ -23,11 +23,11 @@ export function LoginScreen() {
       >
         <div className="flex flex-col gap-1">
           <label className="text-lg">Nome</label>
-          <Input type="text" {...formMethods.register('name')} />
+          <TextField type="text" {...formMethods.register('name')} />
         </div>
         <div className="flex flex-col gap-1 mt-4">
           <label className="text-lg">Email</label>
-          <Input type="email" {...formMethods.register('email')} />
+          <TextField type="email" {...formMethods.register('email')} />
         </div>
         <Button type="submit" className="mt-4">
           Entrar
